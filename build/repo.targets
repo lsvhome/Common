@@ -1,0 +1,7 @@
+<Project>
+   <ItemGroup>
+     <Solutions Update="..\Common.sln" Condition="'$(DotNetBuildFromSource)' == 'true'">
+       <AdditionalProperties>Configuration=$(Configuration)FromSource</AdditionalProperties>
+     </Solutions>
+   </ItemGroup>
+</Project>
