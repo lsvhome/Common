@@ -55,17 +55,25 @@ namespace Microsoft.Extensions.Primitives
         {
             private readonly StringSegment _value;
             private readonly char[] _separators;
-            private int _index;
 
             public Enumerator(ref StringTokenizer tokenizer)
             {
                 _value = tokenizer._value;
                 _separators = tokenizer._separators;
-                Current = default(StringSegment);
-                _index = 0;
+                Current = default;
+                Index = 0;
             }
 
+            /// <summary>
+            /// <see cref="StringSegment" /> that represents the value of the string between the
+            /// previous and current separator.
+            /// </summary>
             public StringSegment Current { get; private set; }
+
+            /// <summary>
+            /// Index of the current separator.
+            /// </summary>
+            public int Index { get; private set; }
 
             object IEnumerator.Current => Current;
 
@@ -75,29 +83,29 @@ namespace Microsoft.Extensions.Primitives
 
             public bool MoveNext()
             {
-                if (_value == null || _index > _value.Length)
+                if (_value == null || Index > _value.Length)
                 {
                     Current = default(StringSegment);
                     return false;
                 }
 
-                var next = _value.IndexOfAny(_separators, _index);
+                var next = _value.IndexOfAny(_separators, Index);
                 if (next == -1)
                 {
                     // No separator found. Consume the remainder of the string.
                     next = _value.Length;
                 }
 
-                Current = _value.Subsegment(_index, next - _index);
-                _index = next + 1;
+                Current = _value.Subsegment(Index, next - Index);
+                Index = next + 1;
 
                 return true;
             }
 
             public void Reset()
             {
-                Current = default(StringSegment);
-                _index = 0;
+                Current = default;
+                Index = 0;
             }
         }
     }
