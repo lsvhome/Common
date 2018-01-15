@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace Microsoft.Extensions.Internal
 {
-    internal struct HashCodeCombiner
+    public struct HashCodeCombiner
     {
         private long _combinedHash64;
 
