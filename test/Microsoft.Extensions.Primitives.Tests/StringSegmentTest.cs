@@ -119,6 +119,8 @@ namespace Microsoft.Extensions.Primitives
 
             // Assert
             Assert.Equal("ello", value);
+            Assert.Equal("ello", value.ToString());
+            Assert.Equal(4, value.Length);
         }
 
         [Fact]

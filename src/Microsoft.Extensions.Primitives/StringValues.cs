@@ -4,7 +4,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Extensions.Internal;
 
 namespace Microsoft.Extensions.Primitives
 {
@@ -410,7 +409,7 @@ namespace Microsoft.Extensions.Primitives
                 return _value == null ? 0 : _value.GetHashCode();
             }
 
-            var hcc = new HashCodeCombiner();
+            var hcc = new Internal.HashCodeCombiner();
             for (var i = 0; i < _values.Length; i++)
             {
                 hcc.Add(_values[i]);
