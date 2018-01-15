@@ -10,6 +10,7 @@ Microsoft.Extensions.Primitives.StringSegment</Description>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>primitives</PackageTags>
+    <Version>5.5.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
